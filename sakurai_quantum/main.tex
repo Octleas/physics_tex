@@ -1,0 +1,71 @@
+% !TEX program = lualatex
+\documentclass[11pt, a4paper]{ltjsarticle}
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{amsthm}
+    \usepackage{graphicx}
+    \usepackage{mathcomp}
+    \usepackage{float}
+    \usepackage{bm}
+    \usepackage{ascmac}
+    \usepackage{booktabs}
+    \usepackage{physics}
+    \usepackage{tikz}
+    \usepackage{multirow}
+    \usepackage{mathtools}
+    \usepackage{caption}
+    \usepackage{siunitx}
+    \usepackage{lmodern}
+    \usepackage{multicol}
+
+    % レイアウト調整
+    \setlength{\textwidth}{\fullwidth}
+    \setlength{\textheight}{40\baselineskip}
+    \addtolength{\textheight}{\topskip}
+    \setlength{\voffset}{-0.6in}
+    \setlength{\headsep}{0.3in}
+    \setlength{\parindent}{1em}
+    \setlength{\parskip}{0.3em}
+
+    % コマンド定義
+    \newcommand{\zu}[3][10cm]{%
+      \begin{figure}[H]
+            \centering
+            \includegraphics[width=#1]{#2}
+            \caption{#3}
+        \end{figure}%
+    }
+
+    \theoremstyle{plain}
+    \newtheorem{thm}{Theorem}[section]
+
+\title{Modern Quantum Mechanics}
+\author{J. J. SAKURAI}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section{[1.4.5 Exercise] スピン$1/2$系における不確定性関係の検証}
+不確定性関係の一般式は
+\begin{equation}
+    \langle(\Delta A)^2\rangle \langle(\Delta B)^2\rangle \geq \frac{1}{4}|\langle[A, B]\rangle|^2
+\end{equation}
+$S_z$の固有状態$|+z\rangle$における各演算子の期待値を求める.
+\begin{eqnarray}
+    \langle S_x \rangle &=& \langle +z|S_x|+z \rangle = 0\\
+    \langle S_y \rangle &=& \langle +z|S_y|+z \rangle = 0
+\end{eqnarray}
+それぞれの分散は$\langle S_i^2 \rangle = \frac{\hbar^2}{4}$より自明にわかるから, 
+\begin{equation}
+    ((1)LHS) = \langle (\Delta S_x)^2 \rangle\langle (\Delta S_y)^2 \rangle = \frac{\hbar^2}{4}\cdot \frac{\hbar^2}{4} = \left(\frac{\hbar^2}{4}\right)^2
+\end{equation}
+また,
+\begin{equation}
+    \langle [S_x,S_y] \rangle = \langle i\hbar S_z \rangle = i\hbar \langle +z|S_z|+z \rangle = i\hbar (\frac{\hbar}{2}) = \frac{i\hbar}{2}
+\end{equation}
+より, RHSは
+\begin{equation}
+    \frac{1}{4}|\
+\end{equation}
+
+\end{document}
