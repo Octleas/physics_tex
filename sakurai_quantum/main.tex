@@ -9,7 +9,9 @@
     \usepackage{bm}
     \usepackage{ascmac}
     \usepackage{booktabs}
-    \usepackage{physics}
+    \usepackage{physics2}
+    \usephysicsmodule{ab}
+    \usephysicsmodule{braket}
     \usepackage{tikz}
     \usepackage{multirow}
     \usepackage{mathtools}
@@ -36,6 +38,10 @@
         \end{figure}%
     }
 
+    \renewcommand{\ket}[1]{\lvert#1\rangle}
+    \renewcommand{\bra}[1]{\langle#1\rvert}
+    \renewcommand{\braket}[2]{\langle{#1}\vert{#2}\rangle}
+
     \theoremstyle{plain}
     \newtheorem{thm}{Theorem}[section]
 
@@ -50,22 +56,56 @@
 \begin{equation}
     \langle(\Delta A)^2\rangle \langle(\Delta B)^2\rangle \geq \frac{1}{4}|\langle[A, B]\rangle|^2
 \end{equation}
-$S_z$の固有状態$|+z\rangle$における各演算子の期待値を求める.
+$S_z$の固有状態$\ket{+z}$における各演算子の期待値を求める.
 \begin{eqnarray}
     \langle S_x \rangle &=& \langle +z|S_x|+z \rangle = 0\\
     \langle S_y \rangle &=& \langle +z|S_y|+z \rangle = 0
 \end{eqnarray}
 それぞれの分散は$\langle S_i^2 \rangle = \frac{\hbar^2}{4}$より自明にわかるから, 
 \begin{equation}
-    ((1)LHS) = \langle (\Delta S_x)^2 \rangle\langle (\Delta S_y)^2 \rangle = \frac{\hbar^2}{4}\cdot \frac{\hbar^2}{4} = \left(\frac{\hbar^2}{4}\right)^2
+    ((1)LHS) = \langle (\Delta S_x)^2 \rangle\langle (\Delta S_y)^2 \rangle = \frac{\hbar^2}{4}\cdot \frac{\hbar^2}{4} = \ab(\frac{\hbar^2}{4})^2
 \end{equation}
 また,
 \begin{equation}
     \langle [S_x,S_y] \rangle = \langle i\hbar S_z \rangle = i\hbar \langle +z|S_z|+z \rangle = i\hbar (\frac{\hbar}{2}) = \frac{i\hbar}{2}
 \end{equation}
-より, RHSは
+より, 
 \begin{equation}
-    \frac{1}{4}|\
+    ((1)RHS) = \frac{1}{4}|\langle [S_x,S_y] \rangle|^2 = \frac{1}{4}\ab|\frac{i\hbar^2}{2}|^2 = \ab(\frac{\hbar^2}{4})^2
 \end{equation}
-
+よって$A = S_x$, $B = S_y$のときに不確定性関係が成り立つことが示された.
+\section{ユニタリ演算子(unitary operator)}
+\begin{itembox}[l]{定理 3.}
+    正規直交性と完全性を満たす2組の基底ケットが与えられている. このときユニタリ演算子$U$が存在して
+    \begin{equation}
+        \ket{b^{(1)}} = U\ket{a^{(1)}}, \ket{b^{(2)}} = U\ket{a^{(2)}}, \dots, \ket{b^{(N)}} = U\ket{a^{(N)}}
+    \end{equation}
+    が成立する. ここで, ユニタリ演算子とは, 条件
+    \begin{equation}
+        U^\dagger U = 1
+    \end{equation}
+    および
+    \begin{equation}
+        UU^\dagger = 1
+    \end{equation}
+    を満たす演算子.
+\end{itembox}
+証明:\\
+\begin{equation}
+    U = \sum_k \ket{b^{(k)}}\bra{a^{(k)}}
+\end{equation}
+という演算子が$U$の役割を果たすものとし, この$U$を$\ket{a^{(l)}}$に掛け算すると,
+\begin{equation}
+    U\ket{a^{(l)}} = \sum_k \bra{b^{(k)}}\braket{a^{(k)}}{a^{(l)}}
+\end{equation}
+$k=l$のときのみ, $\braket{a^{(k)}}{a^{(l)}} = 1$だから, 
+\begin{equation}
+    U\ket{a^{(l)}} = \bra{b^{(l)}}
+\end{equation}
+となることが$\{\ket{a^\prime}\}$の正規直交性から保証される.
+ちなむと
+\begin{equation}
+    U^\dagger U = \sum_k \sum_l \ket{a^{(l)}}\braket{b^{(l)}}{b^{(k)}}\bra{a^{(k)}} = \sum_k \ket{a^{(k)}}\bra{a^{(k)}} = 1
+\end{equation}
 \end{document}
+
